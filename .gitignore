@@ -1,0 +1,9 @@
+/.build/
+/.swiftpm/
+/site/
+.DS_Store
+.env
+.env.*
+*.p8
+*.p12
+/build/

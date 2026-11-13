@@ -1,0 +1,36 @@
+{
+  "manifest_version": "0.3",
+  "name": "textley",
+  "display_name": "Textley",
+  "version": "1.0.1",
+  "description": "Work with open Textley tabs and folder vaults on your Mac.",
+  "long_description": "Connect Claude chat to Textley. Keep Textley open with MCP enabled. The app controls read-only and read-and-write access to open documents and selected vaults. Connected agents may send retrieved text to their AI provider.",
+  "author": { "name": "Protomota, LLC", "url": "https://textley.ai" },
+  "homepage": "https://textley.ai",
+  "support": "https://textley.ai/mcp",
+  "privacy_policies": ["https://textley.ai/privacy#mcp"],
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server.js"],
+      "env": {
+        "TEXTLEY_MCP_URL": "http://127.0.0.1:17327/mcp",
+        "TEXTLEY_MCP_TOKEN": "${user_config.access_token}"
+      }
+    }
+  },
+  "tools_generated": true,
+  "compatibility": { "platforms": ["darwin"], "runtimes": { "node": ">=18.0.0" } },
+  "user_config": {
+    "access_token": {
+      "type": "string",
+      "title": "Textley access token",
+      "description": "In Textley, open Settings → Integrations → MCP and click Copy Access Token. Paste it here and keep Textley open.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}
